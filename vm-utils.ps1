@@ -128,7 +128,15 @@ while ($readStatus -ne 0) {
                 foreach ($vm in $vms) {
 
                     $snapshotName = Read-Host -Prompt "Snapshot name"
-                    Checkpoint-VM -VM $vm -SnapshotName $snapshotName
+                    if ($snapshotName) {
+                        
+                        Checkpoint-VM -VM $vm -SnapshotName $snapshotName
+
+                    } else {
+                        
+                        Checkpoint-VM -VM $vm
+
+                    }
 
                 }
             
